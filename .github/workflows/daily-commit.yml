@@ -13,9 +13,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Make a dummy change
-        run: |
-          echo "Commit made on $(date)" >> daily_commit.log
+    - name: Make a dummy change
+  run: |
+    echo "$(date) - keep repo alive" >> daily_commit.log
 
       - name: Commit and push (by 23f3001973@ds.study.iitm.ac.in)
         env:
