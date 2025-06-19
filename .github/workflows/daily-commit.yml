@@ -3,7 +3,7 @@ name: Daily Commit
 on:
   schedule:
     - cron: '30 4 * * *'  # Runs daily at 04:30 UTC (10:00 AM IST)
-  workflow_dispatch:        # Allows manual triggering
+  workflow_dispatch:        # Allows manual trigger for testing
 
 jobs:
   auto-commit:
@@ -13,9 +13,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-    - name: Make a dummy change
-  run: |
-    echo "$(date) - keep repo alive" >> daily_commit.log
+      - name: Make a dummy change
+        run: |
+          echo "$(date) - keep repo alive" >> daily_commit.log
 
       - name: Commit and push (by 23f3001973@ds.study.iitm.ac.in)
         env:
@@ -26,3 +26,4 @@ jobs:
           git add daily_commit.log
           git commit -m "Daily commit on $(date)" || exit 0
           git push https://x-access-token:${TOKEN}@github.com/${{ github.repository }}.git HEAD:main
+
